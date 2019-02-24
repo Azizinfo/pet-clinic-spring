@@ -4,6 +4,7 @@ import com.springframework.petclinicspring.model.Owner;
 import com.springframework.petclinicspring.model.Vet;
 import com.springframework.petclinicspring.services.OwnerService;
 import com.springframework.petclinicspring.services.VetService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
@@ -17,6 +18,7 @@ public class DataLoad implements CommandLineRunner {
     /*
     with spring 4.2 we add @Autowired
     @Autowired*/
+    @Autowired
     public DataLoad(OwnerService ownerService, VetService vetService) {
 
         this.ownerService = ownerService;
