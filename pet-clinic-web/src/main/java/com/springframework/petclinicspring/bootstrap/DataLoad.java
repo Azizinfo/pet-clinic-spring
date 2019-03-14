@@ -8,25 +8,20 @@ import org.springframework.stereotype.Component;
 import java.time.LocalDate;
 
 @Component
-public class DataLoad implements CommandLineRunner {
+public class DataLoader implements CommandLineRunner {
 
     private final OwnerService ownerService;
     private final VetService vetService;
     private final PetTypeService petTypeService;
-    private final SpecialityService specialityService;
+    private final SpecialityService specialtyService;
     private final VisitService visitService;
 
-
-    /*
-    with spring 4.2 we add @Autowired
-    @Autowired*/
-    //@Autowired
-    public DataLoad(OwnerService ownerService, VetService vetService, PetTypeService petTypeService, SpecialityService specialityService, VisitService visitService) {
-
+    public DataLoader(OwnerService ownerService, VetService vetService, PetTypeService petTypeService,
+                      SpecialityService specialtyService, VisitService visitService) {
         this.ownerService = ownerService;
         this.vetService = vetService;
         this.petTypeService = petTypeService;
-        this.specialityService = specialityService;
+        this.specialtyService = specialtyService;
         this.visitService = visitService;
     }
 
@@ -51,20 +46,20 @@ public class DataLoad implements CommandLineRunner {
 
         Speciality radiology = new Speciality();
         radiology.setDescription("Radiology");
-        Speciality savedRadiology = specialityService.save(radiology);
+        Speciality savedRadiology = specialtyService.save(radiology);
 
         Speciality surgery = new Speciality();
         surgery.setDescription("Surgery");
-        Speciality savedSurgery = specialityService.save(surgery);
+        Speciality savedSurgery = specialtyService.save(surgery);
 
         Speciality dentistry = new Speciality();
         dentistry.setDescription("dentistry");
-        Speciality savedDentistry = specialityService.save(dentistry);
+        Speciality savedDentistry = specialtyService.save(dentistry);
 
         Owner owner1 = new Owner();
         owner1.setFirstName("Michael");
         owner1.setLastName("Weston");
-        owner1.setAdresse("123 Brickerel");
+        owner1.setAddresse("123 Brickerel");
         owner1.setCity("Miami");
         owner1.setTelephone("1231231234");
 
@@ -80,7 +75,7 @@ public class DataLoad implements CommandLineRunner {
         Owner owner2 = new Owner();
         owner2.setFirstName("Fiona");
         owner2.setLastName("Glenanne");
-        owner2.setAdresse("123 Brickerel");
+        owner2.setAddresse("123 Brickerel");
         owner2.setCity("Miami");
         owner2.setTelephone("1231231234");
 
@@ -107,14 +102,12 @@ public class DataLoad implements CommandLineRunner {
         vet1.setLastName("Axe");
         vet1.getSpecialities().add(savedRadiology);
 
-
         vetService.save(vet1);
 
         Vet vet2 = new Vet();
         vet2.setFirstName("Jessie");
         vet2.setLastName("Porter");
         vet2.getSpecialities().add(savedSurgery);
-
 
         vetService.save(vet2);
 
